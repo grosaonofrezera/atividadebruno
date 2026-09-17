@@ -2,9 +2,9 @@ public class Jogador
 {
     public int Id { get; set; }
 
-    private string nome;
+    private string nome = "";
     private int idade;
-    private string posicao;
+    private string posicao = "";
     private int numeroCamisa;
 
     public string Nome
