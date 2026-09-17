@@ -23,4 +23,27 @@ public class JogadorDAO
             comando.ExecuteNonQuery();
         }
     }
+
+        public void Listar()
+    {
+        using (MySqlConnection conn = conexao.Conectar())
+        {
+            string sql = "SELECT * FROM jogadores";
+
+            MySqlCommand comando = new MySqlCommand(sql, conn);
+
+            MySqlDataReader leitor = comando.ExecuteReader();
+
+            while (leitor.Read())
+            {
+                Console.WriteLine(
+                    $"ID: {leitor["id"]} | " +
+                    $"Nome: {leitor["nome"]} | " +
+                    $"Idade: {leitor["idade"]} | " +
+                    $"Posição: {leitor["posicao"]} | " +
+                    $"Camisa: {leitor["numero_camisa"]}"
+                );
+            }
+        }
+    }
 }

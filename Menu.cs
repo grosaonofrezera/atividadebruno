@@ -13,17 +13,38 @@ while (true)
     Console.WriteLine("5 - Excluir jogador");
     Console.WriteLine("0 - Sair");
     Console.WriteLine();
-    Console.Write("Escolha uma opção: ");
 
+    Console.Write("Escolha uma opção: ");
     int opcao = int.Parse(Console.ReadLine());
 
     if (opcao == 1)
     {
-        Console.WriteLine("Cadastrar jogador");
+        Console.Write("Nome: ");
+        string nome = Console.ReadLine();
+
+        Console.Write("Idade: ");
+        int idade = int.Parse(Console.ReadLine());
+
+        Console.Write("Posição: ");
+        string posicao = Console.ReadLine();
+
+        Console.Write("Número da camisa: ");
+        int numeroCamisa = int.Parse(Console.ReadLine());
+
+        Jogador jogador = new Jogador(nome, idade, posicao, numeroCamisa);
+
+        JogadorDAO dao = new JogadorDAO();
+
+        dao.Inserir(jogador);
+
+        Console.WriteLine();
+        Console.WriteLine("Jogador cadastrado!");
     }
     else if (opcao == 2)
     {
-        Console.WriteLine("Listar jogadores");
+        JogadorDAO dao = new JogadorDAO();
+
+        dao.Listar();
     }
     else if (opcao == 3)
     {
