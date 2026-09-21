@@ -1,0 +1,71 @@
+PESQUISA: COMO C# TRABALHA COM BANCOS DE DADOS
+
+4.1 CONEXÃO
+
+1. Como C# realiza uma conexão com um banco de dados?
+
+O C# consegue se conectar a um banco de dados usando uma biblioteca ou um driver específico. Como o banco escolhido neste projeto é o MySQL, é necessário utilizar uma biblioteca que faça essa comunicação entre o programa em C# e o banco. Primeiro é criada uma conexão usando os dados do banco e depois essa conexão é aberta para que o programa possa enviar e receber informações.
+
+2. Qual biblioteca/driver é utilizado pelo banco escolhido?
+
+Para trabalhar com MySQL no C#, podemos utilizar bibliotecas como o MySql.Data ou o MySqlConnector. Uma das opções é o MySql.Data, que possui várias classes para facilitar a comunicação do C# com o MySQL.
+
+3. Como essa biblioteca é adicionada ao projeto?
+
+A biblioteca pode ser adicionada pelo NuGet, que é uma ferramenta usada para instalar pacotes em projetos .NET. No terminal, por exemplo, podemos usar o comando "dotnet add package MySql.Data". Depois de instalar, podemos utilizar as classes da biblioteca dentro do código C#.
+
+4. O que é uma string de conexão?
+
+A string de conexão é basicamente um texto que informa ao programa como encontrar e acessar o banco de dados. Ela contém informações importantes, como o endereço do servidor, o nome do banco, o usuário e a senha.
+
+Um exemplo seria:
+
+server=localhost;database=escola;user=root;password=1234;
+
+5. Quais informações normalmente aparecem em uma string de conexão?
+
+As informações mais comuns são o endereço do servidor, o nome do banco de dados, o usuário, a senha e, em alguns casos, a porta usada pelo banco.
+
+Por exemplo:
+
+server=localhost
+database=escola
+user=root
+password=1234
+port=3306
+
+4.2 COMANDOS SQL
+
+Depois que o C# consegue se conectar ao banco, ele pode executar comandos SQL. Para isso, uma das classes utilizadas é a MySqlCommand.
+
+INSERT
+
+O INSERT serve para adicionar novos dados em uma tabela. Por exemplo, podemos usar um INSERT para cadastrar um novo aluno, informando o nome e a idade dele.
+
+SELECT
+
+O SELECT serve para consultar os dados que já estão armazenados no banco. Por exemplo, podemos usar um SELECT para buscar todos os alunos cadastrados ou apenas um aluno específico.
+
+UPDATE
+
+O UPDATE serve para alterar informações que já existem no banco. Por exemplo, se a idade de um aluno estiver errada, podemos usar um UPDATE para corrigir esse dado.
+
+DELETE
+
+O DELETE serve para excluir informações do banco. Por exemplo, podemos usar um DELETE para remover um aluno que não deve mais fazer parte dos registros.
+
+No C#, esses comandos são enviados para o MySQL através de objetos da classe MySqlCommand.
+
+4.3 CONSULTA DE DADOS
+
+Como o C# recebe os dados retornados por um SELECT?
+
+Quando fazemos um SELECT, o banco de dados procura as informações solicitadas e devolve os resultados para o programa. No C#, podemos usar o MySqlDataReader para receber e ler esses dados.
+
+Como percorrer os resultados de uma consulta?
+
+Os resultados podem ser percorridos usando o método Read() dentro de uma estrutura de repetição, como o while. Cada vez que o Read() é executado, ele passa para o próximo registro encontrado.
+
+Por exemplo, se o banco retornar 10 alunos, o programa pode percorrer os 10 registros, lendo o nome, idade e outras informações de cada aluno.
+
+Como transformar os dados retornados pelo banco em objetos de um
