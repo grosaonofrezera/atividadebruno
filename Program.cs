@@ -228,7 +228,7 @@
             Console.Write("Nova idade: ");
             string entrada = Console.ReadLine();
 
-            if (!entrada.Contains(" ") &&
+            if (!entrada.Contains("") &&
                 int.TryParse(entrada, out idade) &&
                 idade > 0)
             {
