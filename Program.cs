@@ -14,22 +14,117 @@
     Console.WriteLine("0 - Sair");
     Console.WriteLine();
 
-    Console.Write("Escolha uma opção: ");
-    int opcao = int.Parse(Console.ReadLine());
+    int opcao;
+
+    while (true)
+    {
+        Console.Write("Escolha uma opção: ");
+        string entrada = Console.ReadLine();
+
+        if (int.TryParse(entrada, out opcao) && opcao >= 0 && opcao <= 5)
+        {
+            break;
+        }
+
+        Console.WriteLine("Opção inválida!");
+    }
 
     if (opcao == 1)
     {
-        Console.Write("Nome: ");
-        string nome = Console.ReadLine();
+        string nome;
 
-        Console.Write("Idade: ");
-        int idade = int.Parse(Console.ReadLine());
+        while (true)
+        {
+            Console.Write("Nome: ");
+            nome = Console.ReadLine();
 
-        Console.Write("Posição: ");
-        string posicao = Console.ReadLine();
+            bool valido = true;
 
-        Console.Write("Número da camisa: ");
-        int numeroCamisa = int.Parse(Console.ReadLine());
+            if (nome == "")
+            {
+                valido = false;
+            }
+
+            for (int i = 0; i < nome.Length; i++)
+            {
+                if (!char.IsLetter(nome[i]))
+                {
+                    valido = false;
+                }
+            }
+
+            if (valido)
+            {
+                break;
+            }
+
+            Console.WriteLine("O nome deve conter somente letras e não pode ter espaços!");
+        }
+
+        int idade;
+
+        while (true)
+        {
+            Console.Write("Idade: ");
+            string entrada = Console.ReadLine();
+
+            if (!entrada.Contains(" ") &&
+                int.TryParse(entrada, out idade) &&
+                idade > 0)
+            {
+                break;
+            }
+
+            Console.WriteLine("A idade deve ser um número positivo e não pode conter espaços!");
+        }
+
+        string posicao;
+
+        while (true)
+        {
+            Console.Write("Posição: ");
+            posicao = Console.ReadLine();
+
+            bool valido = true;
+
+            if (posicao == "")
+            {
+                valido = false;
+            }
+
+            for (int i = 0; i < posicao.Length; i++)
+            {
+                if (!char.IsLetter(posicao[i]))
+                {
+                    valido = false;
+                }
+            }
+
+            if (valido)
+            {
+                break;
+            }
+
+            Console.WriteLine("A posição deve conter somente letras e não pode ter espaços!");
+        }
+
+        int numeroCamisa;
+
+        while (true)
+        {
+            Console.Write("Número da camisa: ");
+            string entrada = Console.ReadLine();
+
+            if (!entrada.Contains(" ") &&
+                int.TryParse(entrada, out numeroCamisa) &&
+                numeroCamisa >= 1 &&
+                numeroCamisa <= 99)
+            {
+                break;
+            }
+
+            Console.WriteLine("O número da camisa deve ter de 1 a 99 e não pode conter espaços!");
+        }
 
         Jogador jogador = new Jogador(
             nome,
@@ -45,37 +140,151 @@
         Console.WriteLine();
         Console.WriteLine("Jogador cadastrado com sucesso!");
     }
+
     else if (opcao == 2)
     {
         JogadorDAO dao = new JogadorDAO();
 
         dao.Listar();
     }
+
     else if (opcao == 3)
     {
-        Console.Write("Digite o ID do jogador: ");
-        int id = int.Parse(Console.ReadLine());
+        int id;
+
+        while (true)
+        {
+            Console.Write("Digite o ID do jogador: ");
+            string entrada = Console.ReadLine();
+
+            if (!entrada.Contains(" ") &&
+                int.TryParse(entrada, out id) &&
+                id > 0)
+            {
+                break;
+            }
+
+            Console.WriteLine("O ID deve ser um número positivo e não pode conter espaços!");
+        }
 
         JogadorDAO dao = new JogadorDAO();
 
         dao.Buscar(id);
     }
+
     else if (opcao == 4)
     {
-        Console.Write("Digite o ID do jogador que deseja atualizar: ");
-        int id = int.Parse(Console.ReadLine());
+        int id;
 
-        Console.Write("Novo nome: ");
-        string nome = Console.ReadLine();
+        while (true)
+        {
+            Console.Write("Digite o ID do jogador que deseja atualizar: ");
+            string entrada = Console.ReadLine();
 
-        Console.Write("Nova idade: ");
-        int idade = int.Parse(Console.ReadLine());
+            if (!entrada.Contains(" ") &&
+                int.TryParse(entrada, out id) &&
+                id > 0)
+            {
+                break;
+            }
 
-        Console.Write("Nova posição: ");
-        string posicao = Console.ReadLine();
+            Console.WriteLine("O ID deve ser um número positivo e não pode conter espaços!");
+        }
 
-        Console.Write("Novo número da camisa: ");
-        int numeroCamisa = int.Parse(Console.ReadLine());
+        string nome;
+
+        while (true)
+        {
+            Console.Write("Novo nome: ");
+            nome = Console.ReadLine();
+
+            bool valido = true;
+
+            if (nome == "")
+            {
+                valido = false;
+            }
+
+            for (int i = 0; i < nome.Length; i++)
+            {
+                if (!char.IsLetter(nome[i]))
+                {
+                    valido = false;
+                }
+            }
+
+            if (valido)
+            {
+                break;
+            }
+
+            Console.WriteLine("O nome deve conter somente letras e não pode ter espaços!");
+        }
+
+        int idade;
+
+        while (true)
+        {
+            Console.Write("Nova idade: ");
+            string entrada = Console.ReadLine();
+
+            if (!entrada.Contains(" ") &&
+                int.TryParse(entrada, out idade) &&
+                idade > 0)
+            {
+                break;
+            }
+
+            Console.WriteLine("A idade deve ser um número positivo e não pode conter espaços!");
+        }
+
+        string posicao;
+
+        while (true)
+        {
+            Console.Write("Nova posição: ");
+            posicao = Console.ReadLine();
+
+            bool valido = true;
+
+            if (posicao == "")
+            {
+                valido = false;
+            }
+
+            for (int i = 0; i < posicao.Length; i++)
+            {
+                if (!char.IsLetter(posicao[i]))
+                {
+                    valido = false;
+                }
+            }
+
+            if (valido)
+            {
+                break;
+            }
+
+            Console.WriteLine("A posição deve conter somente letras e não pode ter espaços!");
+        }
+
+        int numeroCamisa;
+
+        while (true)
+        {
+            Console.Write("Novo número da camisa: ");
+            string entrada = Console.ReadLine();
+
+            if (!entrada.Contains(" ") &&
+                int.TryParse(entrada, out numeroCamisa) &&
+                numeroCamisa >= 1 &&
+                numeroCamisa <= 99)
+            {
+                break;
+            }
+
+            Console.WriteLine("O número da camisa deve ter de 1 a 99 e não pode conter espaços!");
+        }
 
         Jogador jogador = new Jogador(
             nome,
@@ -88,25 +297,55 @@
 
         JogadorDAO dao = new JogadorDAO();
 
-        dao.Atualizar(jogador);
+        bool atualizado = dao.Atualizar(jogador);
+
+        if (atualizado)
+        {
+            Console.WriteLine("Jogador atualizado com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("Jogador não encontrado!");
+        }
     }
+
     else if (opcao == 5)
     {
-        Console.Write("Digite o ID do jogador que deseja excluir: ");
-        int id = int.Parse(Console.ReadLine());
+        int id;
+
+        while (true)
+        {
+            Console.Write("Digite o ID do jogador que deseja excluir: ");
+            string entrada = Console.ReadLine();
+
+            if (!entrada.Contains(" ") &&
+                int.TryParse(entrada, out id) &&
+                id > 0)
+            {
+                break;
+            }
+
+            Console.WriteLine("O ID deve ser um número positivo e não pode conter espaços!");
+        }
 
         JogadorDAO dao = new JogadorDAO();
 
-        dao.Excluir(id);
+        bool excluido = dao.Excluir(id);
+
+        if (excluido)
+        {
+            Console.WriteLine("Jogador excluído com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("Jogador não encontrado!");
+        }
     }
+
     else if (opcao == 0)
     {
         Console.WriteLine("Saindo...");
         break;
-    }
-    else
-    {
-        Console.WriteLine("Opção inválida!");
     }
 
     Console.WriteLine();
@@ -119,3 +358,5 @@
         break;
     }
 }
+
+

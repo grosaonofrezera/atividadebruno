@@ -24,7 +24,7 @@ public class JogadorDAO
         }
     }
 
-        public void Listar()
+    public void Listar()
     {
         using (MySqlConnection conn = conexao.Conectar())
         {
@@ -46,38 +46,40 @@ public class JogadorDAO
             }
         }
     }
-        public void Atualizar(Jogador jogador)
+
+    public bool Atualizar(Jogador jogador)
     {
         using (MySqlConnection conn = conexao.Conectar())
         {
             string sql = @"UPDATE jogadores
-                        SET nome = @nome,
-                            idade = @idade,
-                            posicao = @posicao,
-                            numero_camisa = @numeroCamisa
-                        WHERE id = @id";
+                           SET nome = @nome,
+                               idade = @idade,
+                               posicao = @posicao,
+                               numero_camisa = @numeroCamisa
+                           WHERE id = @id";
 
             MySqlCommand comando = new MySqlCommand(sql, conn);
 
-            comando.Parameters.AddWithValue("@id", jogador.Id);
             comando.Parameters.AddWithValue("@nome", jogador.Nome);
             comando.Parameters.AddWithValue("@idade", jogador.Idade);
             comando.Parameters.AddWithValue("@posicao", jogador.Posicao);
             comando.Parameters.AddWithValue("@numeroCamisa", jogador.NumeroCamisa);
+            comando.Parameters.AddWithValue("@id", jogador.Id);
 
             int linhasAlteradas = comando.ExecuteNonQuery();
 
             if (linhasAlteradas > 0)
             {
-                Console.WriteLine("Jogador atualizado com sucesso!");
+                return true;
             }
             else
             {
-                Console.WriteLine("Jogador não encontrado!");
+                return false;
             }
         }
     }
-        public void Excluir(int id)
+
+    public bool Excluir(int id)
     {
         using (MySqlConnection conn = conexao.Conectar())
         {
@@ -91,15 +93,16 @@ public class JogadorDAO
 
             if (linhasAlteradas > 0)
             {
-                Console.WriteLine("Jogador excluído com sucesso!");
+                return true;
             }
             else
             {
-                Console.WriteLine("Jogador não encontrado!");
+                return false;
             }
         }
     }
-        public void Buscar(int id)
+
+    public void Buscar(int id)
     {
         using (MySqlConnection conn = conexao.Conectar())
         {

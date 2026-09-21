@@ -12,13 +12,30 @@ public class Jogador
         get { return nome; }
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (value == "")
             {
                 Console.WriteLine("O nome não pode ser vazio!");
             }
             else
             {
-                nome = value;
+                bool valido = true;
+
+                for (int i = 0; i < value.Length; i++)
+                {
+                    if (!char.IsLetter(value[i]))
+                    {
+                        valido = false;
+                    }
+                }
+
+                if (valido)
+                {
+                    nome = value;
+                }
+                else
+                {
+                    Console.WriteLine("O nome deve conter somente letras!");
+                }
             }
         }
     }
@@ -30,7 +47,7 @@ public class Jogador
         {
             if (value < 0)
             {
-                Console.WriteLine("Idade inválida!");
+                Console.WriteLine("A idade deve ser positiva!");
             }
             else
             {
@@ -44,13 +61,30 @@ public class Jogador
         get { return posicao; }
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (value == "")
             {
                 Console.WriteLine("A posição não pode ser vazia!");
             }
             else
             {
-                posicao = value;
+                bool valido = true;
+
+                for (int i = 0; i < value.Length; i++)
+                {
+                    if (!char.IsLetter(value[i]))
+                    {
+                        valido = false;
+                    }
+                }
+
+                if (valido)
+                {
+                    posicao = value;
+                }
+                else
+                {
+                    Console.WriteLine("A posição deve conter somente letras!");
+                }
             }
         }
     }
@@ -60,18 +94,34 @@ public class Jogador
         get { return numeroCamisa; }
         set
         {
-            if (value < 1 || value > 99)
+            if (value <= 0)
             {
-                Console.WriteLine("Número da camisa deve ser entre 1 e 99!");
+                Console.WriteLine("O número da camisa deve ser positivo!");
             }
             else
             {
-                numeroCamisa = value;
+                string numero = value.ToString();
+                bool valido = true;
+
+                for (int i = 0; i < numero.Length; i++)
+                {
+                    if (!char.IsDigit(numero[i]))
+                    {
+                        valido = false;
+                    }
+                }
+
+                if (valido)
+                {
+                    numeroCamisa = value;
+                }
+                else
+                {
+                    Console.WriteLine("O número da camisa deve conter somente dígitos!");
+                }
             }
         }
     }
-
- 
 
     public Jogador(string nome, int idade, string posicao, int numeroCamisa)
     {
@@ -88,6 +138,6 @@ public class Jogador
 
     public void Aniversario()
     {
-        idade += 1;
+        idade++;
     }
 }
